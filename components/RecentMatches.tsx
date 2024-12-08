@@ -228,20 +228,17 @@ const RecentMatches = ({
           return (
             <div
               key={index}
-              className={`border rounded-lg shadow transition ${
+              className={`border rounded-lg shadow transition flex justify-between items-center ${
                 isWinner ? "bg-green-100" : "bg-red-100"
               }`}
             >
               <div
-                className="p-4 cursor-pointer"
+                className="p-4 cursor-pointer flex-grow"
                 onClick={() => toggleMatchExpansion(matchId)}
               >
                 <p className="text-sm tablet:text-lg font-bold">
                   {gameMode === "CLASSIC" && "개인/2인 랭크 게임"} |{" "}
                   {Math.floor(gameDuration / 60)}분
-                </p>
-                <p className="text-xs tablet:text-sm text-gray-600">
-                  {isWinner ? "승리" : "패배"}
                 </p>
                 <div className="flex items-center space-x-4 mt-2">
                   <img
@@ -258,6 +255,17 @@ const RecentMatches = ({
                     {targetParticipant.assists} (KDA)
                   </span>
                 </div>
+              </div>
+
+              {/* 승리/패배 텍스트 */}
+              <div className="p-4">
+                <p
+                  className={`text-xl tablet:text-2xl font-bold ${
+                    isWinner ? "text-green-800" : "text-red-800"
+                  }`}
+                >
+                  {isWinner ? "WIN" : "LOSE"}
+                </p>
               </div>
 
               {/* 경기 상세 정보 (드롭다운) */}
